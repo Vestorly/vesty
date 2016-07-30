@@ -7,7 +7,7 @@
 # Commands:
 #   looking for cents - tells you who has cents
 #   <number> available - money available for grabs
-#   lunchtime is over - clears the data for the day
+#   lunchtime  is over - clears the data for the day
 #   taking <number> from <user> - subtract that from user
 #
 # Author:
@@ -64,10 +64,9 @@ module.exports = (robot) ->
   robot.hear /taking (\d+(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
     amount = +res.match[1]
     nameInput = res.match[3].trim()
-    user = robot.brain.userForFuzzyName(nameInput)
-    if !user
+    if !nameInput
       res.send "could not find user #{nameInput}"
       return
-    [ok, message] = boomclap.take(user.name, amount)
+    [ok, message] = boomclap.take(nameInput, amount)
     res.send message
 
