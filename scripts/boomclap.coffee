@@ -63,7 +63,7 @@ module.exports = (robot) ->
 
   robot.hear /taking (\d+(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
     amount = +res.match[1]
-    nameInput = res.match[3]
+    nameInput = res.match[3].trim()
     user = robot.brain.userForName(nameInput)
     if !user
       res.send "count not find user #{nameInput}"
