@@ -61,9 +61,9 @@ module.exports = (robot) ->
     for name, amount of hash
       res.send "#{name}: #{amount}"
 
-  robot.hear /taking (\d+(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
+  robot.hear /taking ((\d+)?(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
     amount = +res.match[1]
-    nameInput = res.match[3].trim()
+    nameInput = res.match[4].trim()
     if !nameInput
       res.send "could not find user #{nameInput}"
       return
