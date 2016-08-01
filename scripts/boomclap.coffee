@@ -27,7 +27,7 @@ class BoomClap
 
   take: (user, amount) ->
     return [false, "#{user} didnt have cents today"] if !@cache[user]
-    if @cache[user] - amount > 0
+    if @cache[user] - amount >= 0
       @cache[user] -= amount
       @robot.brain.data.boomclap = @cache
       return [true, "#{user} has #{@cache[user]} left"]
