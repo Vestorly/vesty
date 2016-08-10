@@ -104,7 +104,6 @@ module.exports = (robot) ->
         exectext = ''
         exectext = ' (Execute)' if job.exec == true
         text += "#{id}: #{job.pattern} @#{room} \"#{job.message}\"#{exectext}\n"
-    text = robot.adapter.removeFormatting text if robot.adapterName == 'slack'
     msg.send text if text.length > 0
 
   robot.respond /(?:rm|remove|del|delete) job (\d+)/i, (msg) ->
