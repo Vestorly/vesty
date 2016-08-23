@@ -51,7 +51,7 @@ module.exports = (robot) ->
     boomclap.set(name, amount)
     res.send "a well fed team is a happy team"
 
-  robot.hear /lunchtime is over/i, (res) ->
+  robot.respond /lunchtime is over/i, (res) ->
     boomclap.clear()
     res.reply 'is it naya day yet?'
 
