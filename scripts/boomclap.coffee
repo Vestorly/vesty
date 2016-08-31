@@ -30,7 +30,7 @@ class BoomClap
     if @cache[user] - amount >= 0
       @cache[user] -= amount
       @robot.brain.data.boomclap = @cache
-      return [true, "#{user} has #{@cache[user]} left"]
+      return [true, "#{user} has #{@cache[user].toFixed(2)} left"]
     else
       return [false, "#{user} doesnt have enough cents"]
 
@@ -44,12 +44,11 @@ class BoomClap
 module.exports = (robot) ->
   boomclap = new BoomClap robot
 
-  robot.hear /(\d+(\.\d+)?) available*/i, (res) ->
+  robot.hear /((\d+)?(\.\d+)?) available*/i, (res) ->
     amount = +res.match[1]
     name = res.message.user.name
     res.send "thanks for the #{amount}, #{name}"
     boomclap.set(name, amount)
-    res.send "a well fed team is a happy team"
 
   robot.respond /lunchtime is over/i, (res) ->
     boomclap.clear()
@@ -59,9 +58,9 @@ module.exports = (robot) ->
     hash = boomclap.all()
     res.send "ok here is the situation"
     for name, amount of hash
-      res.send "#{name}: #{amount}"
+      res.send "#{name}: #{amount.toFixed(2)}"
 
-  robot.hear /taking ((\d+)?(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
+  robot.hear /((\d+)?(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
     amount = +res.match[1]
     nameInput = res.match[4].trim()
     if !nameInput
