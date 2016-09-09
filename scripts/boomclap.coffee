@@ -44,7 +44,7 @@ class BoomClap
 module.exports = (robot) ->
   boomclap = new BoomClap robot
 
-  robot.hear /((\d+)?(\.\d+)?) available*/i, (res) ->
+  robot.hear /(\d?(\.\d{1,2}?)) available*/i, (res) ->
     amount = +res.match[1]
     name = res.message.user.name
     res.send "thanks for the #{amount}, #{name}"
@@ -60,9 +60,9 @@ module.exports = (robot) ->
     for name, amount of hash
       res.send "#{name}: #{amount.toFixed(2)}"
 
-  robot.hear /((\d+)?(\.\d+)?) from @?([\w .\-]+)\?*$/i, (res) ->
+  robot.hear /(\d?(\.\d{1,2}?)) from @?([\w .\-]+)\?*$/i, (res) ->
     amount = +res.match[1]
-    nameInput = res.match[4].trim()
+    nameInput = res.match[3].trim()
     if !nameInput
       res.send "could not find user #{nameInput}"
       return
