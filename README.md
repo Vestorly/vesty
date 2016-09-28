@@ -212,3 +212,8 @@ Add the subdomain hubot should connect to. If you web URL looks like
 
 You may want to get comfortable with `heroku logs` and `heroku restart` if
 you're having issues.
+
+### Clearing boombclap
+
+vesty new job 17 11 * * * exec vesty lunchtime is over
+vesty tz job <job_id> America/New_York

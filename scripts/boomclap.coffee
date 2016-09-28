@@ -52,7 +52,7 @@ module.exports = (robot) ->
 
   robot.respond /lunchtime is over/i, (res) ->
     boomclap.clear()
-    res.reply 'is it naya day yet?'
+    res.reply 'clearing boomclap'
 
   robot.hear /looking for cents/i, (res) ->
     hash = boomclap.all()
