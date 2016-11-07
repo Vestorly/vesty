@@ -52,7 +52,7 @@ module.exports = (robot) ->
 
   robot.respond /lunchtime is over/i, (res) ->
     boomclap.clear()
-    res.reply 'clearing boomclap'
+    res.send 'clearing boomclap'
 
   robot.hear /looking for cents/i, (res) ->
     hash = boomclap.all()
@@ -68,4 +68,3 @@ module.exports = (robot) ->
       return
     [ok, message] = boomclap.take(nameInput, amount)
     res.send message
-
