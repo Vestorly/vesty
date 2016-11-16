@@ -1,3 +1,11 @@
 node_modules
 .DS_Store*
 .hubot_history
+.idea
+
+# dotenv for environment configuration
+# src: https://github.com/bkeepers/dotenv
+
+.env*
+!.env*.example
+

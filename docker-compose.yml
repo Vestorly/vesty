@@ -1,0 +1,13 @@
+version: '2'
+services:
+  hubot:
+    extends:
+      file: common-services.yml
+      service: app
+    mem_limit: 512m
+    env_file:
+      - '.env.docker'
+    depends_on:
+      - redis
+  redis:
+    image: redis:3.2
