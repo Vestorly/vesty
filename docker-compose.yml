@@ -6,7 +6,7 @@ services:
       service: app
     mem_limit: 512m
     env_file:
-      - '.env'
+      - '.env.docker'
     depends_on:
       - redis
   redis:
